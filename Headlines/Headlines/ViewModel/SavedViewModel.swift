@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 final class SavedViewModel {
     // MARK: -  Instant Properties
     weak var dataSource : GenericDataSource<SavedArticle>?

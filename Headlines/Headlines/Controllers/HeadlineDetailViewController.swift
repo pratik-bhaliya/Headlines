@@ -29,29 +29,24 @@ class HeadlineDetailViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupNavItem()
+        loadWebView()
+    }
+    
+    fileprivate func loadWebView() {
         let url = URL(string: urlString)
         let request = URLRequest(url: url!)
         detailWebView.load(request)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupNavBar()
-    }
-    
-    func setupNavItem() {
+    fileprivate func setupNavItem() {
         let forwardBarItem = UIBarButtonItem(title: "Save", style: .plain, target: self,
                                              action: #selector(saveArticle(sender:)))
         self.navigationItem.rightBarButtonItem = forwardBarItem
-    }
-    
-    func setupNavBar() {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.tintColor = .black
     }
     
-    
-    func setupUI() {
+    fileprivate func setupUI() {
         self.view.backgroundColor = .white
         self.view.addSubview(detailWebView)
         
@@ -66,7 +61,6 @@ class HeadlineDetailViewController: UIViewController {
                 .constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
         ])
     }
-    
     
     @objc func saveArticle(sender: UIBarButtonItem) {
         delegate?.saveArticle()

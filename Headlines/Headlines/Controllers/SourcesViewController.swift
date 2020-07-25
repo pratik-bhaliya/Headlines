@@ -29,7 +29,7 @@ class SourcesViewController: UIViewController {
     
     // MARK: - Class
     
-    func createSpinnerView() {
+    fileprivate func createSpinnerView() {
         let child = SpinnerViewController()
         
         // add the spinner view controller
@@ -39,7 +39,7 @@ class SourcesViewController: UIViewController {
         child.didMove(toParent: self)
         
         // wait two seconds to simulate some work happening
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             // then remove the spinner view controller
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()

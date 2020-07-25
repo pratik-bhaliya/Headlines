@@ -12,7 +12,6 @@ import RealmSwift
 
 // MARK: - Article
 class SavedArticle: Object {
-    //let source: HeadlineSource? = nil
     @objc dynamic var author: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var articleDescription: String = ""

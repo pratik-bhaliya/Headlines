@@ -14,7 +14,6 @@ final class SavedDataSource : GenericDataSource<SavedArticle>, UITableViewDataSo
     
     private lazy var realMViewModel: RealMViewModel = {
         let result = RealMViewModel()
-        result.delegate = self
         return result
     }()
     
@@ -22,7 +21,7 @@ final class SavedDataSource : GenericDataSource<SavedArticle>, UITableViewDataSo
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.value.count
     }
-
+    
     // Cell configuration and setup
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeadlineCell") as! NewsHeadlineCell
@@ -38,7 +37,3 @@ final class SavedDataSource : GenericDataSource<SavedArticle>, UITableViewDataSo
     }
 }
 
-
-extension SavedDataSource: RealMViewModelDelegate {
-    
-}

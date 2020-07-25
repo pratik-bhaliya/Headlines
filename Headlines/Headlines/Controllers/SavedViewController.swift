@@ -25,10 +25,8 @@ class SavedViewController: UIViewController {
         super.viewDidLoad()
         registerAndSetupTableView()
         updateDataSource()
-        // Do any additional setup after loading the view.
     }
-    
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewModel.fetchRecord()

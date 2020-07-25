@@ -26,13 +26,12 @@ extension RealMViewModelDelegate {
     func recordDeleted() {}
 }
 
-class RealMViewModel: NSObject {
+final class RealMViewModel: NSObject {
     
     let realm = try! Realm()
     var delegate: RealMViewModelDelegate?
     
     // MARK: DB Helper Methods
-    
     func saveRecords(article: SavedArticle) {
         try! realm.write {
             realm.add(article)
@@ -44,9 +43,7 @@ class RealMViewModel: NSObject {
         let fetchedArticle = realm.objects(SavedArticle.self)
         if fetchedArticle.count > 0 {
             var fetchedArticles = [SavedArticle]()
-            for article in fetchedArticle {
-                fetchedArticles.append(article)
-            }
+            fetchedArticle.forEach {fetchedArticles.append($0)}
             delegate?.recordFetched(headlines: fetchedArticles)
         } else {
             delegate?.recordFetched(headlines: [])

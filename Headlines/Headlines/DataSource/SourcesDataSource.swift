@@ -33,9 +33,9 @@ extension SourceListDataSource: UITableViewDelegate {
             let selectedCell = self.data.value[indexPath.row]
             
             // Remove unselected sources
-            for (index,value) in globalArray.shared.collectionArray.enumerated() {
+            for (index,value) in SelectedSource.shared.collectionArray.enumerated() {
                 if value == selectedCell.name {
-                    globalArray.shared.collectionArray.remove(at: index)
+                    SelectedSource.shared.collectionArray.remove(at: index)
                 }
             }
         }
@@ -43,7 +43,7 @@ extension SourceListDataSource: UITableViewDelegate {
             selectedIndexPaths.insert(indexPath) //select
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             // Add source to global array.
-            globalArray.shared.collectionArray.append(self.data.value[indexPath.row].name)
+            SelectedSource.shared.collectionArray.append(self.data.value[indexPath.row].name)
         }
     }
     
@@ -53,10 +53,8 @@ extension SourceListDataSource: UITableViewDelegate {
 }
 
 
-struct globalArray {
-
+struct SelectedSource {
     private init() { }
-    static var shared = globalArray()
+    static var shared = SelectedSource()
     var collectionArray:[String] = []
-
 }

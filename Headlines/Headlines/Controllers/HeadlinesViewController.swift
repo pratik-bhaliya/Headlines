@@ -10,7 +10,7 @@ import UIKit
 
 class HeadlinesViewController: UIViewController {
     
-    enum Constatnt {
+    enum Constant {
         static let height: CGFloat = 300.0
     }
     
@@ -39,7 +39,7 @@ class HeadlinesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         createSpinnerView()
-        if globalArray.shared.collectionArray.count == 0 {
+        if SelectedSource.shared.collectionArray.count == 0 {
             self.viewModel.getTopHeadlines()
         } else {
             self.viewModel.getTopHeadlinesBySource()
@@ -48,7 +48,7 @@ class HeadlinesViewController: UIViewController {
     
     // MARK: - Class
     
-    func createSpinnerView() {
+    fileprivate func createSpinnerView() {
         let child = SpinnerViewController()
         
         // add the spinner view controller
@@ -58,7 +58,7 @@ class HeadlinesViewController: UIViewController {
         child.didMove(toParent: self)
         
         // wait two seconds to simulate some work happening
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             // then remove the spinner view controller
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
@@ -101,7 +101,7 @@ class HeadlinesViewController: UIViewController {
 
 extension HeadlinesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constatnt.height
+        return Constant.height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -119,8 +119,10 @@ extension HeadlinesViewController: UITableViewDelegate {
 extension HeadlinesViewController: RealMViewModelDelegate {
     func recordSaved() {
         DispatchQueue.main.async {
-            let controller = UIAlertController(title: "Article saved", message: "Article successfully saved.", preferredStyle: .alert)
-            controller.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            let controller = UIAlertController(title: "Article", message: "Article successfully saved.", preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            }))
             self.present(controller, animated: true, completion: nil)
         }
     }

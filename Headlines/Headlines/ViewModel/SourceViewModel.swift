@@ -9,7 +9,6 @@
 import Foundation
 
 final class SourceViewModel {
-    
     // MARK: -  Instant Properties
     weak var dataSource : GenericDataSource<Source>?
     weak var networkService: NetworkServiceProtocol?
@@ -21,10 +20,8 @@ final class SourceViewModel {
     }
     
     func getSources() {
-        
         NetworkManager.shared.get(with: .sources, responseType: NewsSource.self) { [weak self] (response, error) in
-            
-            guard let self = self else { return } // weak returns a optional so we guard
+            guard let self = self else { return } // weak returns a optional
             
             guard error == nil else {
                 self.onErrorHandling?(error)
