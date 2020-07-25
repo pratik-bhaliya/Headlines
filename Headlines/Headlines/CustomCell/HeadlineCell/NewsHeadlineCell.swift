@@ -48,7 +48,7 @@ class NewsHeadlineCell: UITableViewCell {
         headlineAuthor.text = headlines.author
         
         if let url = headlines.urlToImage {
-            headlineImageView.loadImageUsingCacheWithURLString(url, placeHolder: UIImage(named: ""))
+            headlineImageView.loadImageUsingCacheWithURLString(url, placeHolder: UIImage(named: "placeholder"))
         }
         
     }
@@ -57,7 +57,7 @@ class NewsHeadlineCell: UITableViewCell {
         headlineTitle.text = article.title
         headlineSubtitle.text = article.articleDescription
         headlineAuthor.text = article.author
-        headlineImageView.loadImageUsingCacheWithURLString(article.urlToImage, placeHolder: UIImage(named: ""))
+        headlineImageView.loadImageUsingCacheWithURLString(article.urlToImage, placeHolder: UIImage(named: "placeholder"))
     }
     
 }
