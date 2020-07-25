@@ -25,13 +25,13 @@ final class SavedDataSource : GenericDataSource<SavedArticle>, UITableViewDataSo
     // Cell configuration and setup
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeadlineCell") as! NewsHeadlineCell
-        cell.configureSavedCell(article: self.data.value[indexPath.row])
+        cell.configureSavedCell(self.data.value[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            realMViewModel.deleteRecords(headline: self.data.value[indexPath.row])
+            realMViewModel.deleteRecords(self.data.value[indexPath.row])
             self.data.value.remove(at: indexPath.row)
         }
     }

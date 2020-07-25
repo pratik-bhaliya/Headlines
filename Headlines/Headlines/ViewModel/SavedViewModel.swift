@@ -27,7 +27,7 @@ final class SavedViewModel {
 
 extension SavedViewModel: RealMViewModelDelegate {
     // Assigned fetched record to datasource
-    func recordFetched(headlines: [SavedArticle]) {
+    func recordFetched(_ headlines: [SavedArticle]) {
         self.dataSource?.data.value.removeAll()
         if headlines.count > 0 {
             headlines.forEach { self.dataSource?.data.value.append($0) }

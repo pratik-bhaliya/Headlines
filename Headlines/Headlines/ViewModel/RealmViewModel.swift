@@ -13,7 +13,7 @@ import RealmSwift
 protocol RealMViewModelDelegate {
     func recordSaved()
     func recordSavingFailed(error: NSError)
-    func recordFetched(headlines: [SavedArticle])
+    func recordFetched(_ headlines: [SavedArticle])
     func recordDeleted()
 }
 
@@ -21,7 +21,7 @@ protocol RealMViewModelDelegate {
 extension RealMViewModelDelegate {
     func recordSaved() {}
     func recordSavingFailed(error: NSError) {}
-    func recordFetched(headlines: [SavedArticle]) {}
+    func recordFetched(_ headlines: [SavedArticle]) {}
     func recordDeleted() {}
 }
 
@@ -31,7 +31,7 @@ final class RealMViewModel: NSObject {
     var delegate: RealMViewModelDelegate?
     
     // MARK: -DB Helper Methods
-    func saveRecords(article: SavedArticle) {
+    func saveRecords(_ article: SavedArticle) {
         try! realm.write {
             realm.add(article)
             delegate?.recordSaved() // Notify for article successful insertion
@@ -43,13 +43,13 @@ final class RealMViewModel: NSObject {
         if fetchedArticle.count > 0 {
             var fetchedArticles = [SavedArticle]()
             fetchedArticle.forEach {fetchedArticles.append($0)}
-            delegate?.recordFetched(headlines: fetchedArticles)
+            delegate?.recordFetched(fetchedArticles)
         } else {
-            delegate?.recordFetched(headlines: [])
+            delegate?.recordFetched([])
         }
     }
     
-    func deleteRecords(headline: SavedArticle) {
+    func deleteRecords(_ headline: SavedArticle) {
         // Persist your data easily
         try! realm.write {
             realm.delete(headline)

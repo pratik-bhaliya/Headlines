@@ -18,7 +18,7 @@ final class HeadlineListDataSource : GenericDataSource<Article>, UITableViewData
     // Cell configuration and setup
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeadlineCell") as! NewsHeadlineCell
-        cell.configureCell(headlines: self.data.value[indexPath.row])
+        cell.configureCell(self.data.value[indexPath.row])
         return cell
     }
 }

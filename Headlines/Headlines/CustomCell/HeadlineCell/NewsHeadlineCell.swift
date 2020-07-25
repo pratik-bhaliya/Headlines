@@ -43,7 +43,7 @@ final class NewsHeadlineCell: UITableViewCell {
         headlineImageView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    func configureCell(headlines: Article) {
+    func configureCell(_ headlines: Article) {
         headlineTitle.text = headlines.title
         headlineSubtitle.text = headlines.articleDescription
         headlineAuthor.text = headlines.author
@@ -54,7 +54,7 @@ final class NewsHeadlineCell: UITableViewCell {
         
     }
     
-    func configureSavedCell(article: SavedArticle) {
+    func configureSavedCell(_ article: SavedArticle) {
         headlineTitle.text = article.title
         headlineSubtitle.text = article.articleDescription
         headlineAuthor.text = article.author
