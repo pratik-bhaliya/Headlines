@@ -138,6 +138,7 @@ extension HeadlinesViewController: RealMViewModelDelegate {
 extension HeadlinesViewController: SaveArticleDelegate {
     func saveArticle() {
         let article = self.dataSource.data.value[selectedArticle]
-        realMViewModel.saveRecords(article: article)
+        let savedArticle = SavedArticle(article: article)
+        realMViewModel.saveRecords(article: savedArticle)
     }
 }

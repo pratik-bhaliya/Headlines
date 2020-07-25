@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 // MARK: - UITableviewDatasource
-final class SavedDataSource : GenericDataSource<Article>, UITableViewDataSource {
+final class SavedDataSource : GenericDataSource<SavedArticle>, UITableViewDataSource {
     
     private lazy var realMViewModel: RealMViewModel = {
         let result = RealMViewModel()
@@ -26,7 +26,7 @@ final class SavedDataSource : GenericDataSource<Article>, UITableViewDataSource 
     // Cell configuration and setup
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeadlineCell") as! NewsHeadlineCell
-        cell.configureCell(headlines: self.data.value[indexPath.row])
+        cell.configureSavedCell(article: self.data.value[indexPath.row])
         return cell
     }
     

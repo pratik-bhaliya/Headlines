@@ -53,4 +53,11 @@ class NewsHeadlineCell: UITableViewCell {
         
     }
     
+    func configureSavedCell(article: SavedArticle) {
+        headlineTitle.text = article.title
+        headlineSubtitle.text = article.articleDescription
+        headlineAuthor.text = article.author
+        headlineImageView.loadImageUsingCacheWithURLString(article.urlToImage, placeHolder: UIImage(named: ""))
+    }
+    
 }

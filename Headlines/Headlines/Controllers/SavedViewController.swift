@@ -63,10 +63,9 @@ extension SavedViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let selectedNews = self.dataSource.data.value[indexPath.row].url {
+         let selectedNews = self.dataSource.data.value[indexPath.row].url
             let headlineDetail = SFSafariViewController(url: URL(string: selectedNews)!)
             present(headlineDetail, animated: true)
-        }
     }
 }
 

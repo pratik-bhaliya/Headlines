@@ -11,10 +11,10 @@ import Foundation
 
 final class SavedViewModel {
     // MARK: -  Instant Properties
-    weak var dataSource : GenericDataSource<Article>?
+    weak var dataSource : GenericDataSource<SavedArticle>?
     private var realMViewModel: RealMViewModel?
     
-    init(dataSource: GenericDataSource<Article>?, realVM: RealMViewModel = RealMViewModel()) {
+    init(dataSource: GenericDataSource<SavedArticle>?, realVM: RealMViewModel = RealMViewModel()) {
         self.dataSource = dataSource
         self.realMViewModel = realVM
     }
@@ -26,7 +26,7 @@ final class SavedViewModel {
 }
 
 extension SavedViewModel: RealMViewModelDelegate {
-    func recordFetched(headlines: [Article]) {
+    func recordFetched(headlines: [SavedArticle]) {
         self.dataSource?.data.value.removeAll()
         if headlines.count > 0 {
             headlines.forEach { self.dataSource?.data.value.append($0) }

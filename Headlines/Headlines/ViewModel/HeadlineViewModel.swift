@@ -31,7 +31,7 @@ final class HeadlineViewModel {
                 return
             }
             
-            response?.articles.forEach { self.dataSource?.data.value.append($0)}
+            response?.articles?.forEach { self.dataSource?.data.value.append($0)}
         }
     }
     
@@ -46,7 +46,7 @@ final class HeadlineViewModel {
                     self.onErrorHandling?(error)
                     return
                 }
-                response?.articles.forEach { self.dataSource?.data.value.append($0)}
+                response?.articles?.forEach { self.dataSource?.data.value.append($0)}
             }
         }
     }
