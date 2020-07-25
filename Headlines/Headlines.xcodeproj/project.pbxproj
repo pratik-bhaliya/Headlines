@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,16 @@
 		05EED95224CC0EDE0070FB7C /* HeadlinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED95124CC0EDE0070FB7C /* HeadlinesTests.swift */; };
 		05EED96624CC10D60070FB7C /* HeadlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED96524CC10D60070FB7C /* HeadlinesViewController.swift */; };
 		05EED96824CC10FD0070FB7C /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED96724CC10FC0070FB7C /* SourcesViewController.swift */; };
+		05EED96A24CC12BD0070FB7C /* DynamicValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED96924CC12BD0070FB7C /* DynamicValue.swift */; };
+		05EED96C24CC12DD0070FB7C /* Cachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED96B24CC12DD0070FB7C /* Cachable.swift */; };
+		05EED96E24CC12FA0070FB7C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED96D24CC12FA0070FB7C /* ActivityIndicator.swift */; };
+		05EED97124CC13400070FB7C /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED97024CC13400070FB7C /* EndPoint.swift */; };
+		05EED97424CC13690070FB7C /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED97324CC13690070FB7C /* EndPointType.swift */; };
+		05EED97624CC13A50070FB7C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED97524CC13A50070FB7C /* NetworkManager.swift */; };
+		05EED97824CC13B70070FB7C /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED97724CC13B70070FB7C /* ResponseData.swift */; };
+		05EED97A24CC14710070FB7C /* Headlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED97924CC14710070FB7C /* Headlines.swift */; };
+		05EED97C24CC14990070FB7C /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED97B24CC14990070FB7C /* NewsSource.swift */; };
+		05EED97E24CC14C20070FB7C /* HeadlinesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EED97D24CC14C20070FB7C /* HeadlinesDataSource.swift */; };
 		3C596C0A47E3C163BB014511 /* Pods_Headlines.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF9F151EF3579C6860C1267 /* Pods_Headlines.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +54,16 @@
 		05EED95324CC0EDE0070FB7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05EED96524CC10D60070FB7C /* HeadlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesViewController.swift; sourceTree = "<group>"; };
 		05EED96724CC10FC0070FB7C /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
+		05EED96924CC12BD0070FB7C /* DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicValue.swift; sourceTree = "<group>"; };
+		05EED96B24CC12DD0070FB7C /* Cachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cachable.swift; sourceTree = "<group>"; };
+		05EED96D24CC12FA0070FB7C /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		05EED97024CC13400070FB7C /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		05EED97324CC13690070FB7C /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		05EED97524CC13A50070FB7C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		05EED97724CC13B70070FB7C /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
+		05EED97924CC14710070FB7C /* Headlines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headlines.swift; sourceTree = "<group>"; };
+		05EED97B24CC14990070FB7C /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
+		05EED97D24CC14C20070FB7C /* HeadlinesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesDataSource.swift; sourceTree = "<group>"; };
 		28B0E38FFEC47B8B0C875174 /* Pods-Headlines.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Headlines.debug.xcconfig"; path = "Target Support Files/Pods-Headlines/Pods-Headlines.debug.xcconfig"; sourceTree = "<group>"; };
 		2FA3B3F03B4FBEBFA79F619A /* Pods_HeadlinesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeadlinesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF9F151EF3579C6860C1267 /* Pods_Headlines.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Headlines.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +170,10 @@
 		05EED95F24CC0F160070FB7C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				05EED97224CC134C0070FB7C /* EndPointType */,
+				05EED96F24CC132F0070FB7C /* EndPoint */,
+				05EED97524CC13A50070FB7C /* NetworkManager.swift */,
+				05EED97724CC13B70070FB7C /* ResponseData.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -157,6 +181,9 @@
 		05EED96024CC0F390070FB7C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				05EED96924CC12BD0070FB7C /* DynamicValue.swift */,
+				05EED96B24CC12DD0070FB7C /* Cachable.swift */,
+				05EED96D24CC12FA0070FB7C /* ActivityIndicator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -164,6 +191,8 @@
 		05EED96124CC0F400070FB7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				05EED97924CC14710070FB7C /* Headlines.swift */,
+				05EED97B24CC14990070FB7C /* NewsSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,8 +214,25 @@
 		05EED96424CC0F6D0070FB7C /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				05EED97D24CC14C20070FB7C /* HeadlinesDataSource.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		05EED96F24CC132F0070FB7C /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				05EED97024CC13400070FB7C /* EndPoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		05EED97224CC134C0070FB7C /* EndPointType */ = {
+			isa = PBXGroup;
+			children = (
+				05EED97324CC13690070FB7C /* EndPointType.swift */,
+			);
+			path = EndPointType;
 			sourceTree = "<group>";
 		};
 		0831698C40E94E4B04179A37 /* Pods */ = {
@@ -197,7 +243,6 @@
 				E0A1E649C4AA688C7C357883 /* Pods-HeadlinesTests.debug.xcconfig */,
 				887269061C0F6117C62387C4 /* Pods-HeadlinesTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -378,10 +423,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05EED97E24CC14C20070FB7C /* HeadlinesDataSource.swift in Sources */,
+				05EED96C24CC12DD0070FB7C /* Cachable.swift in Sources */,
 				05EED96624CC10D60070FB7C /* HeadlinesViewController.swift in Sources */,
+				05EED96A24CC12BD0070FB7C /* DynamicValue.swift in Sources */,
+				05EED97124CC13400070FB7C /* EndPoint.swift in Sources */,
+				05EED97624CC13A50070FB7C /* NetworkManager.swift in Sources */,
 				05EED96824CC10FD0070FB7C /* SourcesViewController.swift in Sources */,
+				05EED96E24CC12FA0070FB7C /* ActivityIndicator.swift in Sources */,
 				05EED93F24CC0EDA0070FB7C /* SavedViewController.swift in Sources */,
+				05EED97A24CC14710070FB7C /* Headlines.swift in Sources */,
+				05EED97C24CC14990070FB7C /* NewsSource.swift in Sources */,
 				05EED93B24CC0EDA0070FB7C /* AppDelegate.swift in Sources */,
+				05EED97424CC13690070FB7C /* EndPointType.swift in Sources */,
+				05EED97824CC13B70070FB7C /* ResponseData.swift in Sources */,
 				05EED93D24CC0EDA0070FB7C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
