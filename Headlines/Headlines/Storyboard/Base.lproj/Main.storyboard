@@ -123,7 +123,7 @@
         <scene sceneID="6pf-mj-zA9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6tT-EK-WoM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Source" id="3g0-sA-Yz0"/>
+                    <tabBarItem key="tabBarItem" title="Source" image="source" id="3g0-sA-Yz0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="cnt-Xc-azl">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -142,7 +142,7 @@
         <scene sceneID="EGM-r0-tiX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S3n-Wd-4f5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Saved" id="mbD-0p-jxv"/>
+                    <tabBarItem key="tabBarItem" title="Saved" image="save" id="mbD-0p-jxv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="RU5-Fa-Mj5">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -161,7 +161,7 @@
         <scene sceneID="zip-bg-DLE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mez-Qw-IK5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Headlines" id="2Kv-cO-Wfe"/>
+                    <tabBarItem key="tabBarItem" title="Headlines" image="headline" id="2Kv-cO-Wfe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="bu9-Cu-Q7r">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -177,4 +177,9 @@
             <point key="canvasLocation" x="-1329" y="-1352"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="headline" width="24" height="24"/>
+        <image name="save" width="24" height="24"/>
+        <image name="source" width="24" height="24"/>
+    </resources>
 </document>

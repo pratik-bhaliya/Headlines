@@ -6,35 +6,32 @@
 //  Copyright © 2020 Pratik Bhaliya. All rights reserved.
 //
 
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let topHeadlines = try? newJSONDecoder().decode(TopHeadlines.self, from: jsonData)
+
 import Foundation
-import RealmSwift
 
 // MARK: - TopHeadlines
-class TopHeadlines: Object, Codable {
+struct TopHeadlines: Codable {
     let status: String?
     let totalResults: Int?
-    let articles: [Article]
+    let articles: [Article]?
 }
 
 // MARK: - Article
-class Article: Object, Codable {
-    //let source: HeadlineSource? = nil
-    @objc dynamic var author: String? = nil
-    @objc dynamic var title: String? = nil
-    @objc dynamic var articleDescription: String? = nil
-    @objc dynamic var url: String? = nil
-    @objc dynamic var urlToImage: String? = nil
-    @objc dynamic var content: String? = nil
+struct Article: Codable {
+    let author: String?
+    let title, articleDescription: String?
+    let url: String?
+    let urlToImage: String?
+    let publishedAt: String?
+    let content: String?
 
     enum CodingKeys: String, CodingKey {
         case author, title
         case articleDescription = "description"
-        case url, urlToImage, content
+        case url, urlToImage, publishedAt, content
     }
-}
-
-// MARK: - Source
-class HeadlineSource: Object, Codable {
-    let id: String = ""
-    let name: String = ""
 }
