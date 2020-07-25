@@ -13,8 +13,9 @@ protocol SaveArticleDelegate {
     func saveArticle()
 }
 
-class HeadlineDetailViewController: UIViewController {
+final class HeadlineDetailViewController: UIViewController {
     
+    // MARK: - Instant Properties
     var delegate: SaveArticleDelegate?
     var urlString: String!
     
@@ -25,28 +26,32 @@ class HeadlineDetailViewController: UIViewController {
         return webView
     }()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        setWebViewConstraint()
         setupNavItem()
         loadWebView()
     }
     
+    // MARK: - Class
     fileprivate func loadWebView() {
         let url = URL(string: urlString)
         let request = URLRequest(url: url!)
         detailWebView.load(request)
     }
     
+    // Customise navigation bar
     fileprivate func setupNavItem() {
         let forwardBarItem = UIBarButtonItem(title: "Save", style: .plain, target: self,
-                                             action: #selector(saveArticle(sender:)))
+                                             action: #selector(saveButtonPressed(sender:)))
         self.navigationItem.rightBarButtonItem = forwardBarItem
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.tintColor = .black
     }
-    
-    fileprivate func setupUI() {
+
+    // Setting web view and constraint
+    fileprivate func setWebViewConstraint() {
         self.view.backgroundColor = .white
         self.view.addSubview(detailWebView)
         
@@ -62,7 +67,8 @@ class HeadlineDetailViewController: UIViewController {
         ])
     }
     
-    @objc func saveArticle(sender: UIBarButtonItem) {
+    // Save button pressed
+    @objc func saveButtonPressed(sender: UIBarButtonItem) {
         delegate?.saveArticle()
     }
 }

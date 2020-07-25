@@ -20,6 +20,7 @@ final class HeadlineViewModel {
         self.networkService = networkService
     }
     
+    // Get initial headlines
     func getTopHeadlines() {
         NetworkManager.shared.get(with: .topHeadline, responseType: TopHeadlines.self) { [weak self] (response, error) in
             
@@ -32,6 +33,7 @@ final class HeadlineViewModel {
         }
     }
     
+    // Get user selected sources headlines
     func getTopHeadlinesBySource() {
         self.dataSource?.data.value.removeAll()
         SelectedSource.shared.collectionArray.forEach {

@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 
-// MARK: - Article
+// MARK: - SavedArticle
 class SavedArticle: Object {
     @objc dynamic var author: String = ""
     @objc dynamic var title: String = ""

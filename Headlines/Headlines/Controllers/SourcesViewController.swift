@@ -8,15 +8,19 @@
 
 import UIKit
 
-class SourcesViewController: UIViewController {
+final class SourcesViewController: UIViewController {
     
+    // MARK: - IBOutlet connection from storyboard
     @IBOutlet weak var sourceTableView: UITableView!
+    
+    // MARK: - Instant Properties
     var dataSource = SourceListDataSource()
     lazy var viewModel: SourceViewModel = {
         let viewModel = SourceViewModel(dataSource: dataSource)
         return viewModel
     }()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         registerAndSetupTableView()
@@ -26,9 +30,7 @@ class SourcesViewController: UIViewController {
         updateDataSource()
     }
     
-    
     // MARK: - Class
-    
     fileprivate func createSpinnerView() {
         let child = SpinnerViewController()
         

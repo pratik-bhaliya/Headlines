@@ -8,13 +8,16 @@
 
 import UIKit
 
-class HeadlinesViewController: UIViewController {
+final class HeadlinesViewController: UIViewController {
     
     enum Constant {
         static let height: CGFloat = 300.0
     }
     
+    // MARK: - IBOutlet connection from storyboard
     @IBOutlet weak var headlinesTableView: UITableView!
+    
+    // MARK: - Instant Properties
     var dataSource = HeadlineListDataSource()
     var selectedArticle = 0
     lazy var viewModel: HeadlineViewModel = {
@@ -28,12 +31,12 @@ class HeadlinesViewController: UIViewController {
         return result
     }()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         registerAndSetupTableView()
         errorHandlingAlert()
         updateDataSource()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {

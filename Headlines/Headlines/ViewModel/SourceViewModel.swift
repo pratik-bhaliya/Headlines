@@ -19,6 +19,7 @@ final class SourceViewModel {
         self.networkService = networkService
     }
     
+    // Get all english filtered sources
     func getSources() {
         NetworkManager.shared.get(with: .sources, responseType: NewsSource.self) { [weak self] (response, error) in
             guard let self = self else { return } // weak returns a optional

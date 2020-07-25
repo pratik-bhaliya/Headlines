@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - UITableViewDataSource
 final class SourceListDataSource : GenericDataSource<Source>, UITableViewDataSource {
     var selectedIndexPaths = Set<IndexPath>()
 
@@ -24,8 +25,8 @@ final class SourceListDataSource : GenericDataSource<Source>, UITableViewDataSou
     }
 }
 
+// MARK: - UITableViewDelegate
 extension SourceListDataSource: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if selectedIndexPaths.contains(indexPath) { //deselect
             selectedIndexPaths.remove(indexPath)
@@ -50,11 +51,4 @@ extension SourceListDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.accessoryType = selectedIndexPaths.contains(indexPath) ? .checkmark : .none
     }
-}
-
-
-struct SelectedSource {
-    private init() { }
-    static var shared = SelectedSource()
-    var collectionArray:[String] = []
 }

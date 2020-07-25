@@ -9,18 +9,22 @@
 import UIKit
 import SafariServices
 
-class SavedViewController: UIViewController {
-    enum Constatnt {
+final class SavedViewController: UIViewController {
+    enum Constant {
         static let height: CGFloat = 300.0
     }
     
+    // MARK: - IBOutlet connection from storyboard
     @IBOutlet weak var savedTableView: UITableView!
+    
+    // MARK: - Instant Properties
     var dataSource = SavedDataSource()
     lazy var viewModel: SavedViewModel = {
         let viewModel = SavedViewModel(dataSource: dataSource)
         return viewModel
     }()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         registerAndSetupTableView()
@@ -32,6 +36,7 @@ class SavedViewController: UIViewController {
         self.viewModel.fetchRecord()
     }
     
+    // MARK: - Class
     fileprivate func registerAndSetupTableView() {
         savedTableView.register(UINib(nibName: "NewsHeadlineCell", bundle: nil), forCellReuseIdentifier: "NewsHeadlineCell")
         
@@ -54,10 +59,10 @@ class SavedViewController: UIViewController {
     }
 }
 
-
+// MARK: - UITableViewDelegate
 extension SavedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constatnt.height
+        return Constant.height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

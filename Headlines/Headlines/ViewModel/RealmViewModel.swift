@@ -9,8 +9,7 @@
 import Foundation
 import RealmSwift
 
-// MARK: DB Protocol Methods
-
+// MARK: - DB Protocol Methods
 protocol RealMViewModelDelegate {
     func recordSaved()
     func recordSavingFailed(error: NSError)
@@ -27,11 +26,11 @@ extension RealMViewModelDelegate {
 }
 
 final class RealMViewModel: NSObject {
-    
+    // MARK: -  Instant Properties
     let realm = try! Realm()
     var delegate: RealMViewModelDelegate?
     
-    // MARK: DB Helper Methods
+    // MARK: -DB Helper Methods
     func saveRecords(article: SavedArticle) {
         try! realm.write {
             realm.add(article)

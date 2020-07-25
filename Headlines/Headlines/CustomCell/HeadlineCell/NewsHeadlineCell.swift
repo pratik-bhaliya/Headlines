@@ -8,8 +8,9 @@
 
 import UIKit
 
-class NewsHeadlineCell: UITableViewCell {
+final class NewsHeadlineCell: UITableViewCell {
     
+    // MARK: - IBOutlet connection
     @IBOutlet weak var headlineImageView: UIImageView!
     @IBOutlet weak var headlineTitle: UILabel!
     @IBOutlet weak var headlineSubtitle: UILabel!
@@ -19,13 +20,14 @@ class NewsHeadlineCell: UITableViewCell {
     // MARK: - Instant property
     var gradientLayer: CAGradientLayer = CAGradientLayer()
     
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
-        
     }
     
-    func setupCell() {
+    // MARK: - Class
+   fileprivate func setupCell() {
         self.backView.layer.cornerRadius = 10.0
         self.backView.layer.masksToBounds = true
         if #available(iOS 13.0, *) {
@@ -36,7 +38,6 @@ class NewsHeadlineCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        // here we just need to update the frame
         gradientLayer.frame = self.bounds
         gradientLayer.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor, UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor ]
         headlineImageView.layer.insertSublayer(gradientLayer, at: 0)

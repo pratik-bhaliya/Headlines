@@ -8,20 +8,22 @@
 
 import UIKit
 
-class SourcesTableViewCell: UITableViewCell {
+final class SourcesTableViewCell: UITableViewCell {
     
+    // MARK: - IBOutlet connection
     @IBOutlet weak var backView: UIView!
-    
     @IBOutlet weak var sourceName: UILabel!
-    
     @IBOutlet weak var sourceDescription: UILabel!
     @IBOutlet weak var sourceCategory: UILabel!
+    
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
     
-    func setupCell() {
+    // MARK: - Class
+    fileprivate func setupCell() {
         self.backView.layer.cornerRadius = 10.0
         self.backView.layer.masksToBounds = true
         if #available(iOS 13.0, *) {
