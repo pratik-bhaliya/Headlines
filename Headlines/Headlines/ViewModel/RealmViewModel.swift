@@ -11,18 +11,18 @@ import RealmSwift
 
 // MARK: - DB Protocol Methods
 protocol RealMViewModelDelegate {
-    func recordSaved()
-    func recordSavingFailed(error: NSError)
-    func recordFetched(_ headlines: [SavedArticle])
-    func recordDeleted()
+    func objectSaved()
+    func objectSavingFailed(error: NSError)
+    func objectFetched(_ headlines: [SavedArticle])
+    func objectRemoved()
 }
 
 // Make RealMViewModelDelegate methods optionals
 extension RealMViewModelDelegate {
-    func recordSaved() {}
-    func recordSavingFailed(error: NSError) {}
-    func recordFetched(_ headlines: [SavedArticle]) {}
-    func recordDeleted() {}
+    func objectSaved() {}
+    func objectSavingFailed(error: NSError) {}
+    func objectFetched(_ headlines: [SavedArticle]) {}
+    func objectRemoved() {}
 }
 
 final class RealMViewModel: NSObject {
@@ -31,29 +31,29 @@ final class RealMViewModel: NSObject {
     var delegate: RealMViewModelDelegate?
     
     // MARK: -DB Helper Methods
-    func saveRecords(_ article: SavedArticle) {
+    func insertObject(_ article: SavedArticle) {
         try! realm.write {
             realm.add(article)
-            delegate?.recordSaved() // Notify for article successful insertion
+            delegate?.objectSaved() // Notify for article successful insertion
         }
     }
     
-    func fetchRecords() {
+    func fetchObjects() {
         let fetchedArticle = realm.objects(SavedArticle.self)
         if fetchedArticle.count > 0 {
             var fetchedArticles = [SavedArticle]()
             fetchedArticle.forEach {fetchedArticles.append($0)}
-            delegate?.recordFetched(fetchedArticles)
+            delegate?.objectFetched(fetchedArticles)
         } else {
-            delegate?.recordFetched([])
+            delegate?.objectFetched([])
         }
     }
     
-    func deleteRecords(_ headline: SavedArticle) {
+    func removeObjectAtIndex(_ headline: SavedArticle) {
         // Persist your data easily
         try! realm.write {
             realm.delete(headline)
-            delegate?.recordDeleted() // Notify successfully deleted
+            delegate?.objectRemoved() // Notify successfully deleted
         }
     }
     

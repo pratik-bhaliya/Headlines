@@ -31,7 +31,7 @@ final class SavedDataSource : GenericDataSource<SavedArticle>, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            realMViewModel.deleteRecords(self.data.value[indexPath.row])
+            realMViewModel.removeObjectAtIndex(self.data.value[indexPath.row])
             self.data.value.remove(at: indexPath.row)
         }
     }

@@ -24,31 +24,12 @@ final class SourcesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerAndSetupTableView()
-        createSpinnerView()
         self.viewModel.getSources()
         errorHandlingAlert()
         updateDataSource()
     }
     
     // MARK: - Class
-    fileprivate func createSpinnerView() {
-        let child = SpinnerViewController()
-        
-        // add the spinner view controller
-        addChild(child)
-        child.view.frame = view.frame
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-        
-        // wait two seconds to simulate some work happening
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            // then remove the spinner view controller
-            child.willMove(toParent: nil)
-            child.view.removeFromSuperview()
-            child.removeFromParent()
-        }
-    }
-    
     fileprivate func registerAndSetupTableView() {
         sourceTableView.register(UINib(nibName: "SourcesTableViewCell", bundle: nil), forCellReuseIdentifier: "SourcesTableViewCell")
         

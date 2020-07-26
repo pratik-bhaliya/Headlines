@@ -41,7 +41,6 @@ final class HeadlinesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        createSpinnerView()
         if SelectedSource.shared.collectionArray.count == 0 {
             self.viewModel.getTopHeadlines()
         } else {
@@ -50,25 +49,6 @@ final class HeadlinesViewController: UIViewController {
     }
     
     // MARK: - Class
-    
-    fileprivate func createSpinnerView() {
-        let child = SpinnerViewController()
-        
-        // add the spinner view controller
-        addChild(child)
-        child.view.frame = view.frame
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-        
-        // wait two seconds to simulate some work happening
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            // then remove the spinner view controller
-            child.willMove(toParent: nil)
-            child.view.removeFromSuperview()
-            child.removeFromParent()
-        }
-    }
-    
     fileprivate func registerAndSetupTableView() {
         headlinesTableView.register(UINib(nibName: "NewsHeadlineCell", bundle: nil), forCellReuseIdentifier: "NewsHeadlineCell")
         
@@ -108,11 +88,11 @@ extension HeadlinesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedNews = self.dataSource.data.value[indexPath.row].url
+        let selectedHeadlineURL = self.dataSource.data.value[indexPath.row].url
         let detailViewController = HeadlineDetailViewController()
         selectedArticle = indexPath.row
         detailViewController.delegate = self
-        detailViewController.urlString = selectedNews
+        detailViewController.urlString = selectedHeadlineURL
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
@@ -120,9 +100,10 @@ extension HeadlinesViewController: UITableViewDelegate {
 
 
 extension HeadlinesViewController: RealMViewModelDelegate {
-    func recordSaved() {
+    
+    func objectSaved() {
         DispatchQueue.main.async {
-            let controller = UIAlertController(title: "Article", message: "Article successfully saved.", preferredStyle: .alert)
+            let controller = UIAlertController(title: "Headline", message: "Article successfully saved.", preferredStyle: .alert)
             controller.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
                 self.navigationController?.popViewController(animated: true)
             }))
@@ -130,9 +111,9 @@ extension HeadlinesViewController: RealMViewModelDelegate {
         }
     }
     
-    func recordSavingFailed(error: NSError) {
+    func objectSavingFailed(error: NSError) {
         DispatchQueue.main.async {
-            let controller = UIAlertController(title: "Article", message: "Oops, Article couldn't saved!", preferredStyle: .alert)
+            let controller = UIAlertController(title: "Headline", message: "Oops, Article couldn't saved!", preferredStyle: .alert)
             controller.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
             self.present(controller, animated: true, completion: nil)
         }
@@ -144,6 +125,6 @@ extension HeadlinesViewController: SaveArticleDelegate {
     func saveArticle() {
         let article = self.dataSource.data.value[selectedArticle]
         let savedArticle = SavedArticle(article: article)
-        realMViewModel.saveRecords(savedArticle)
+        realMViewModel.insertObject(savedArticle)
     }
 }
