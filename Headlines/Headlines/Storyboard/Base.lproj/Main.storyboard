@@ -77,6 +77,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="Mez-Qw-IK5" kind="relationship" relationship="viewControllers" id="jZe-70-7h8"/>
@@ -119,11 +120,11 @@
             </objects>
             <point key="canvasLocation" x="-78" y="261"/>
         </scene>
-        <!--Source-->
+        <!--Sources-->
         <scene sceneID="6pf-mj-zA9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6tT-EK-WoM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Source" image="source" id="3g0-sA-Yz0"/>
+                    <tabBarItem key="tabBarItem" title="Sources" image="source" id="3g0-sA-Yz0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="cnt-Xc-azl">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
