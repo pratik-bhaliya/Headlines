@@ -35,7 +35,7 @@ final class SourcesTableViewCell: UITableViewCell {
     func configureCell(_ source: Source) {
         sourceName.text = source.name
         sourceDescription.text = source.sourceDescription
-        sourceCategory.text = source.category.rawValue
+        sourceCategory.text = source.category.rawValue.capitalizingFirstLetter()
     }
     
 }
