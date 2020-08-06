@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class HeadlineViewModel {
+struct HeadlineViewModel {
     
     // MARK: -  Instant Properties
     weak var dataSource : GenericDataSource<Article>?
@@ -22,30 +22,40 @@ final class HeadlineViewModel {
     
     // Get initial headlines
     func getTopHeadlines() {
-        NetworkManager.shared.get(with: .topHeadline, responseType: TopHeadlines.self) { [weak self] (response, error) in
-            
-            guard let self = self else { return } // weak returns a optional
-            guard error == nil else {
+        
+        guard let service = networkService else {
+            self.onErrorHandling?(.genericError)
+            return
+        }
+        
+        service.get(with: .topHeadline, responseType: TopHeadlines.self) { result in
+            switch result {
+            case .success(let articles):
+                articles.articles?.forEach { self.dataSource?.data.value.append($0)}
+            case .failure(let error):
                 self.onErrorHandling?(error)
-                return
             }
-            response?.articles?.forEach { self.dataSource?.data.value.append($0)}
         }
     }
     
     // Get user selected sources headlines
     func getTopHeadlinesBySource() {
         self.dataSource?.data.value.removeAll()
+        
+        guard let service = networkService else {
+            self.onErrorHandling?(.genericError)
+            return
+        }
+        
         SelectedSource.shared.collectionArray.forEach {
-            NetworkManager.shared.get(with: .topHeadlineBySource(sourceName: $0.replacingOccurrences(of: " ", with: "-")), responseType: TopHeadlines.self) { [weak self] (response, error) in
+            service.get(with: .topHeadlineBySource(sourceName: $0.replacingOccurrences(of: " ", with: "-")), responseType: TopHeadlines.self) { result in
                 
-                guard let self = self else { return } // weak returns a optional
-                
-                guard error == nil else {
+                switch result {
+                case .success(let articles):
+                    articles.articles?.forEach { self.dataSource?.data.value.append($0)}
+                case .failure(let error):
                     self.onErrorHandling?(error)
-                    return
                 }
-                response?.articles?.forEach { self.dataSource?.data.value.append($0)}
             }
         }
     }

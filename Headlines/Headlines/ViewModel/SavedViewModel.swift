@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class SavedViewModel {
+struct SavedViewModel {
     // MARK: -  Instant Properties
     weak var dataSource : GenericDataSource<SavedArticle>?
     private var realMViewModel: RealMViewModel?

@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class SourceViewModel {
+struct SourceViewModel {
     // MARK: -  Instant Properties
     weak var dataSource : GenericDataSource<Source>?
     weak var networkService: NetworkServiceProtocol?
@@ -21,14 +21,19 @@ final class SourceViewModel {
     
     // Get all english filtered sources
     func getSources() {
-        NetworkManager.shared.get(with: .sources, responseType: NewsSource.self) { [weak self] (response, error) in
-            guard let self = self else { return } // weak returns a optional
+        guard let service = networkService else {
+            self.onErrorHandling?(.genericError)
+            return
+        }
+        
+        service.get(with: .sources, responseType: NewsSource.self) { result in
             
-            guard error == nil else {
+            switch result {
+            case .success(let source):
+                source.sources.forEach { self.dataSource?.data.value.append($0)}
+            case .failure(let error):
                 self.onErrorHandling?(error)
-                return
             }
-            response?.sources.forEach { self.dataSource?.data.value.append($0)}
         }
     }
 }
