@@ -5,7 +5,7 @@ target 'Headlines' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-    pod 'RealmSwift' 
+    pod 'RealmSwift'
 
 target 'HeadlinesTests' do
     inherit! :search_paths
