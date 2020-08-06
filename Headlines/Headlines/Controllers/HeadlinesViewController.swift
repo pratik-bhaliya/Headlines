@@ -19,7 +19,8 @@ final class HeadlinesViewController: UIViewController {
     
     // MARK: - Instant Properties
     var dataSource = HeadlineListDataSource()
-    var selectedArticle = 0
+    private var savedRecords: [SavedArticle] = []
+    var selectedArticleIndex = 0
     lazy var viewModel: HeadlineViewModel = {
         let viewModel = HeadlineViewModel(dataSource: dataSource)
         return viewModel
@@ -41,6 +42,7 @@ final class HeadlinesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.realMViewModel.fetchObjects()
         if SelectedSource.shared.collectionArray.count == 0 {
             self.viewModel.getTopHeadlines()
         } else {
@@ -88,11 +90,17 @@ extension HeadlinesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedHeadlineURL = self.dataSource.data.value[indexPath.row].url
+        let selectedHeadline = self.dataSource.data.value[indexPath.row]
         let detailViewController = HeadlineDetailViewController()
-        selectedArticle = indexPath.row
+        selectedArticleIndex = indexPath.row
         detailViewController.delegate = self
-        detailViewController.urlString = selectedHeadlineURL
+        detailViewController.urlString = selectedHeadline.url
+        for (_, item) in savedRecords.enumerated() {
+            if item.title == selectedHeadline.title {
+                detailViewController.enableSaveButton = false
+            }
+        }
+        
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
@@ -111,6 +119,13 @@ extension HeadlinesViewController: RealMViewModelDelegate {
         }
     }
     
+    func objectFetched(_ headlines: [SavedArticle]) {
+        self.savedRecords.removeAll()
+        if headlines.count > 0 {
+            headlines.forEach { self.savedRecords.append($0) }
+        }
+    }
+    
     func objectSavingFailed(error: NSError) {
         DispatchQueue.main.async {
             let controller = UIAlertController(title: "Headline", message: "Oops, Article couldn't saved!", preferredStyle: .alert)
@@ -123,7 +138,7 @@ extension HeadlinesViewController: RealMViewModelDelegate {
 
 extension HeadlinesViewController: SaveArticleDelegate {
     func saveArticle() {
-        let article = self.dataSource.data.value[selectedArticle]
+        let article = self.dataSource.data.value[selectedArticleIndex]
         let savedArticle = SavedArticle(article: article)
         realMViewModel.insertObject(savedArticle)
     }

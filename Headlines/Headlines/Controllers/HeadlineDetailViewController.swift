@@ -18,7 +18,8 @@ final class HeadlineDetailViewController: UIViewController {
     // MARK: - Instant Properties
     var delegate: SaveArticleDelegate?
     var urlString: String?
-    
+    var enableSaveButton: Bool = true
+
     lazy var detailWebView: WKWebView = {
         let webConfiguration = WKWebViewConfiguration()
         let webView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -52,15 +53,27 @@ final class HeadlineDetailViewController: UIViewController {
     }
     
     // Customise navigation bar
+    fileprivate func navigationRightBarButton(_ enable: Bool) {
+        let forwardButton: UIBarButtonItem
+        if enable {
+            forwardButton = UIBarButtonItem(title: "Save", style: .plain, target: self,
+                                                 action: #selector(saveButtonPressed(sender:)))
+        } else {
+            forwardButton = UIBarButtonItem(title: "Saved", style: .plain, target: self,
+                                                 action: #selector(saveButtonPressed(sender:)))
+        }
+        
+        self.navigationItem.rightBarButtonItem = forwardButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = enable
+    }
+    
     fileprivate func setupNavItem() {
-        let forwardBarItem = UIBarButtonItem(title: "Save", style: .plain, target: self,
-                                             action: #selector(saveButtonPressed(sender:)))
-        self.navigationItem.rightBarButtonItem = forwardBarItem
+        navigationRightBarButton(enableSaveButton)
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.tintColor = .black
     }
     
-    func showActivityIndicator(show: Bool) {
+    fileprivate func showActivityIndicator(show: Bool) {
         if show {
             activityIndicator.startAnimating()
         } else {
