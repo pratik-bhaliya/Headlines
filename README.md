@@ -22,7 +22,7 @@ This Sample project is developed as part of coding evaluation.
 -   Application level Dependency Manager that provides a standard format for managing external libraries.
 ### Realm 
 -  Realm is the first database built for mobile. An alternative to SQLite and Core Data that's fast, easy to use, and open source.
-- [readme](../Headlines/blob/master/Headlines/Headlines/Model/Doc.md)
+- [readme](../Headlines/blob/master/Headlines/Headlines/Model/Doc)
 
 ## Project Architecture
 This project has designed using The Model-View-ViewModel (MVVM) pattern separates objects into three types: models, views and view-models.
